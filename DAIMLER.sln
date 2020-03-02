@@ -8,7 +8,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Manual de WPF.pdf = Manual de WPF.pdf
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos", "Demos\Demos.csproj", "{FB20F43B-50BE-4F3B-B301-EB1B46610AB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nevegacion", "Nevegacion\Nevegacion.csproj", "{54F03A17-2830-4232-B591-B9E527454B91}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB20F43B-50BE-4F3B-B301-EB1B46610AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB20F43B-50BE-4F3B-B301-EB1B46610AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB20F43B-50BE-4F3B-B301-EB1B46610AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB20F43B-50BE-4F3B-B301-EB1B46610AB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54F03A17-2830-4232-B591-B9E527454B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54F03A17-2830-4232-B591-B9E527454B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54F03A17-2830-4232-B591-B9E527454B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54F03A17-2830-4232-B591-B9E527454B91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

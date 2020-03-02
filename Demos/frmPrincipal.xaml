@@ -1,0 +1,27 @@
+﻿<Window x:Class="Demos.frmPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Demos"
+        mc:Ignorable="d"
+        Title="frmPrincipal" Height="450" Width="800">
+    <DockPanel>
+        <StackPanel Width="150" HorizontalAlignment="Left">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF69CCF7" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Content="Ventana Paralela" Click="Button_Click" />
+            <Button Content="Ventana Dependiente" Click="Button_Click_1" />
+            <Button Content="Cuadro de dialogo" Click="Button_Click_2" />
+            <Button Content="Personas" Click="Button_Click_3" />
+            <Button Content="Productos" Click="Button_Click_4" />
+            <Button Content="Cierra" Click="Button_Click_5" />
+            <Button Content="Salir" Click="Button_Click_6" />
+        </StackPanel>
+        <ContentControl x:Name="ccHost" />
+    </DockPanel>
+</Window>
