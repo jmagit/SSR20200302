@@ -21,6 +21,7 @@
             <Button Content="Productos" Click="Button_Click_4" />
             <Button Content="Cierra" Click="Button_Click_5" />
             <Button Content="Salir" Click="Button_Click_6" />
+            <Button Content="web" Click="Button_Click_7" />
         </StackPanel>
         <ContentControl x:Name="ccHost" />
     </DockPanel>

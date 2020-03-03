@@ -63,5 +63,12 @@ namespace Demos {
         private void Button_Click_6(object sender, RoutedEventArgs e) {
             App.Current.Shutdown();
         }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e) {
+            var wb = new WebBrowser();
+            wb.Navigate("https://iga.emea.corpinter.net/guestwifi/ES157i/connected.html");
+            ccHost.Content = wb;
+
+        }
     }
 }

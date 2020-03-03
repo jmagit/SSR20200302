@@ -12,13 +12,14 @@ namespace Demos {
     /// </summary>
     public partial class App : Application {
 
-        private void Arranque(object sender, StartupEventArgs e) {
-            var dlg = new cDlg();
-            if (dlg.ShowDialog() == true) {
-                MainWindow = new frmPrincipal();
-                MainWindow.Show();
-
-            }
-        }
+        //protected override void OnStartup(StartupEventArgs e) {
+        //    base.OnStartup(e);
+        //    var dlg = new cDlg();
+        //     this.ShutdownMode = ShutdownMode.OnMainWindowClose;
+        //   if (dlg.ShowDialog() == true) {
+        //        System.Windows.Application.Current.MainWindow = new frmPrincipal();
+        //        System.Windows.Application.Current.MainWindow.Show();
+        //    }
+        //}
     }
 }

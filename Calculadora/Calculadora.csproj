@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FB20F43B-50BE-4F3B-B301-EB1B46610AB5}</ProjectGuid>
+    <ProjectGuid>{A0CB0D3F-549D-4A9F-87F5-6CFED7CD217F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Demos</RootNamespace>
-    <AssemblyName>Demos</AssemblyName>
+    <RootNamespace>Calculadora</RootNamespace>
+    <AssemblyName>Calculadora</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,25 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="cDlg.xaml.cs">
-      <DependentUpon>cDlg.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ucPersonalizado.xaml.cs">
-      <DependentUpon>ucPersonalizado.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ucPersonas.xaml.cs">
-      <DependentUpon>ucPersonas.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ucProductos.xaml.cs">
-      <DependentUpon>ucProductos.xaml</DependentUpon>
-    </Compile>
-    <Page Include="cDlg.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Controles\CalculadoraUC.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="frmPrincipal.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -83,24 +67,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="frmPrincipal.xaml.cs">
-      <DependentUpon>frmPrincipal.xaml</DependentUpon>
+    <Compile Include="Controles\CalculadoraUC.xaml.cs">
+      <DependentUpon>CalculadoraUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ucPersonalizado.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Theme\Estilos.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ucPersonas.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ucProductos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -129,46 +105,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="imagenes\109_AllAnnotations_Error_48x48_72.png" />
-    <Resource Include="imagenes\109_AllAnnotations_Help_32x32_72.png" />
-    <Resource Include="imagenes\1475_Text Balloon_48x48.png" />
-    <Resource Include="imagenes\1549_Paper_clip_blue.png" />
-    <Resource Include="imagenes\1683_Lightbulb_256x256.png" />
-    <Resource Include="imagenes\accept.png" />
-    <Resource Include="imagenes\arroba.png" />
-    <Resource Include="imagenes\btn-window-close-1.png" />
-    <Resource Include="imagenes\btn-window-close-2.png" />
-    <Resource Include="imagenes\btn-window-close-3.png" />
-    <Resource Include="imagenes\Calculator.png" />
-    <Resource Include="imagenes\cancel.png" />
-    <Resource Include="imagenes\check_azul.png" />
-    <Resource Include="imagenes\comida128x128.png" />
-    <Resource Include="imagenes\comida48x48.png" />
-    <Resource Include="imagenes\delete.png" />
-    <Resource Include="imagenes\descanso128x128.png" />
-    <Resource Include="imagenes\descanso48x48.png" />
-    <Resource Include="imagenes\exclamation.png" />
-    <Resource Include="imagenes\FolderOpen_16x16_72.png" />
-    <Resource Include="imagenes\Folder_16x16.png" />
-    <Resource Include="imagenes\gestiones128x128.png" />
-    <Resource Include="imagenes\gestiones48x48.png" />
-    <Resource Include="imagenes\go-down-7.png" />
-    <Resource Include="imagenes\go-next-7.png" />
-    <Resource Include="imagenes\go-next-8.png" />
-    <Resource Include="imagenes\go-next.png" />
-    <Resource Include="imagenes\go-previous-7.png" />
-    <Resource Include="imagenes\go-previous-8.png" />
-    <Resource Include="imagenes\go-previous.png" />
-    <Resource Include="imagenes\go-up-7.png" />
-    <Resource Include="imagenes\Mas.gif" />
-    <Resource Include="imagenes\Menos.gif" />
-    <SplashScreen Include="imagenes\inicio.jpg" />
-    <Content Include="imagenes\mov_bbb.mp4" />
-    <Resource Include="imagenes\tick.png" />
-    <Resource Include="imagenes\tick2.png" />
-    <Resource Include="imagenes\view-refresh-3.png" />
+    <Resource Include="Images\calculator.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
