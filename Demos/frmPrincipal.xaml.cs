@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Aplication.Core;
+using Demos.ViewModels;
 using Demos.Views;
 
 namespace Demos {
@@ -52,8 +54,41 @@ namespace Demos {
             ccHost.Content = personas;
         }
 
+        private void abrir(UserControl uc, object vm = null) {
+            if (vm != null) {
+                uc.DataContext = vm;
+            }
+            if (uc.DataContext is IClosed)
+                (uc.DataContext as IClosed).Closed += (s, ev) => {
+                    if (!(uc.DataContext is ICanClosed) || (uc.DataContext as ICanClosed).CanClosed())
+                        Cerrar();
+                };
+            ccHost.Content = uc;
+        }
+
+        private void Cerrar() {
+            ccHost.Content = null;
+        }
+
         private void Button_Click_4(object sender, RoutedEventArgs e) {
-            ccHost.Content = new ucProductos();
+            var vm = new ProductosVM();
+            vm.PropertyChanged += (s, ev) => {
+                if (ev.PropertyName == nameof(ProductosVM.Modo))
+                    switch (vm.Modo) {
+                        case EstadoCRUD.list:
+                            abrir(new ProductosLst(), vm);
+                            break;
+                        case EstadoCRUD.add:
+                        case EstadoCRUD.edit:
+                            abrir(new ProductosForm(), vm);
+                            break;
+                        case EstadoCRUD.view:
+                            abrir(new ProductosView(), vm);
+                            break;
+                    }
+            };
+            abrir(new ProductosLst(), vm);
+            vm.List.Execute();
 
         }
 

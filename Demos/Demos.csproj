@@ -35,8 +35,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.6.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.6.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -57,6 +72,33 @@
     </ApplicationDefinition>
     <Compile Include="cDlg.xaml.cs">
       <DependentUpon>cDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\Servicios\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Convertidores\BooleanToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\CeroToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\InvertVisibilityConverter.cs" />
+    <Compile Include="Convertidores\NegateBooleanConverter.cs" />
+    <Compile Include="Convertidores\NotNullToBooleanConverter.cs" />
+    <Compile Include="Convertidores\NullToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\StringToNullConverter.cs" />
+    <Compile Include="Convertidores\ValueToInvisibilityConverter.cs" />
+    <Compile Include="Convertidores\ValueToVisibilityConverter.cs" />
+    <Compile Include="Core\Bases.cs" />
+    <Compile Include="Core\DelegateCommand.cs" />
+    <Compile Include="ViewModels\ActoresVM.cs" />
+    <Compile Include="ViewModels\ProductosVM.cs" />
+    <Compile Include="Views\ProductosForm.xaml.cs">
+      <DependentUpon>ProductosForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductosLst.xaml.cs">
+      <DependentUpon>ProductosLst.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProductosView.xaml.cs">
+      <DependentUpon>ProductosView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ucPersonalizado.xaml.cs">
       <DependentUpon>ucPersonalizado.xaml</DependentUpon>
@@ -90,6 +132,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Tema.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductosForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductosLst.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProductosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ucPersonalizado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +179,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\Servicios\ProductosService.wsdl" />
+    <None Include="Connected Services\Servicios\ProductosService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Servicios\ProductosService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Servicios\ProductosService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Entidades.Producto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -129,46 +199,84 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="imagenes\109_AllAnnotations_Error_48x48_72.png" />
-    <Resource Include="imagenes\109_AllAnnotations_Help_32x32_72.png" />
-    <Resource Include="imagenes\1475_Text Balloon_48x48.png" />
-    <Resource Include="imagenes\1549_Paper_clip_blue.png" />
-    <Resource Include="imagenes\1683_Lightbulb_256x256.png" />
-    <Resource Include="imagenes\accept.png" />
-    <Resource Include="imagenes\arroba.png" />
-    <Resource Include="imagenes\btn-window-close-1.png" />
-    <Resource Include="imagenes\btn-window-close-2.png" />
-    <Resource Include="imagenes\btn-window-close-3.png" />
-    <Resource Include="imagenes\Calculator.png" />
-    <Resource Include="imagenes\cancel.png" />
-    <Resource Include="imagenes\check_azul.png" />
-    <Resource Include="imagenes\comida128x128.png" />
-    <Resource Include="imagenes\comida48x48.png" />
-    <Resource Include="imagenes\delete.png" />
-    <Resource Include="imagenes\descanso128x128.png" />
-    <Resource Include="imagenes\descanso48x48.png" />
-    <Resource Include="imagenes\exclamation.png" />
-    <Resource Include="imagenes\FolderOpen_16x16_72.png" />
-    <Resource Include="imagenes\Folder_16x16.png" />
-    <Resource Include="imagenes\gestiones128x128.png" />
-    <Resource Include="imagenes\gestiones48x48.png" />
-    <Resource Include="imagenes\go-down-7.png" />
-    <Resource Include="imagenes\go-next-7.png" />
-    <Resource Include="imagenes\go-next-8.png" />
-    <Resource Include="imagenes\go-next.png" />
-    <Resource Include="imagenes\go-previous-7.png" />
-    <Resource Include="imagenes\go-previous-8.png" />
-    <Resource Include="imagenes\go-previous.png" />
-    <Resource Include="imagenes\go-up-7.png" />
-    <Resource Include="imagenes\Mas.gif" />
-    <Resource Include="imagenes\Menos.gif" />
-    <SplashScreen Include="imagenes\inicio.jpg" />
-    <Content Include="imagenes\mov_bbb.mp4" />
-    <Resource Include="imagenes\tick.png" />
-    <Resource Include="imagenes\tick2.png" />
-    <Resource Include="imagenes\view-refresh-3.png" />
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{8e2d2e41-f0a8-4d94-88d8-2a0e605c0778}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{15907b44-6d42-4a7e-8659-9ebc19432d76}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\109_AllAnnotations_Error_48x48_72.png" />
+    <Resource Include="Imagenes\109_AllAnnotations_Help_32x32_72.png" />
+    <Resource Include="Imagenes\1475_Text Balloon_48x48.png" />
+    <Resource Include="Imagenes\1549_Paper_clip_blue.png" />
+    <Resource Include="Imagenes\1683_Lightbulb_256x256.png" />
+    <Resource Include="Imagenes\accept.png" />
+    <Resource Include="Imagenes\arroba.png" />
+    <Resource Include="Imagenes\btn-window-close-1.png" />
+    <Resource Include="Imagenes\btn-window-close-2.png" />
+    <Resource Include="Imagenes\btn-window-close-3.png" />
+    <Resource Include="Imagenes\Calculator.png" />
+    <Resource Include="Imagenes\cancel.png" />
+    <Resource Include="Imagenes\check_azul.png" />
+    <Resource Include="Imagenes\comida128x128.png" />
+    <Resource Include="Imagenes\comida48x48.png" />
+    <Resource Include="Imagenes\delete.png" />
+    <Resource Include="Imagenes\descanso128x128.png" />
+    <Resource Include="Imagenes\descanso48x48.png" />
+    <Resource Include="Imagenes\exclamation.png" />
+    <Resource Include="Imagenes\FolderOpen_16x16_72.png" />
+    <Resource Include="Imagenes\Folder_16x16.png" />
+    <Resource Include="Imagenes\gestiones128x128.png" />
+    <Resource Include="Imagenes\gestiones48x48.png" />
+    <Resource Include="Imagenes\go-down-7.png" />
+    <Resource Include="Imagenes\go-next-7.png" />
+    <Resource Include="Imagenes\go-next-8.png" />
+    <Resource Include="Imagenes\go-next.png" />
+    <Resource Include="Imagenes\go-previous-7.png" />
+    <Resource Include="Imagenes\go-previous-8.png" />
+    <Resource Include="Imagenes\go-previous.png" />
+    <Resource Include="Imagenes\go-up-7.png" />
+    <Resource Include="Imagenes\Mas.gif" />
+    <Resource Include="Imagenes\Menos.gif" />
+    <SplashScreen Include="Imagenes\inicio.jpg" />
+    <Resource Include="Imagenes\Fondos\pexels-photo-921292.png" />
+    <Resource Include="Imagenes\Fondos\pexels-photo-921305.png" />
+    <Resource Include="Imagenes\Fondos\pexels-photo-921322.png" />
+    <None Include="Connected Services\Servicios\ProductosService.disco" />
+    <None Include="Connected Services\Servicios\configuration91.svcinfo" />
+    <None Include="Connected Services\Servicios\configuration.svcinfo" />
+    <None Include="Connected Services\Servicios\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Resource Include="Imagenes\Iconos\back.png" />
+    <Resource Include="Imagenes\Iconos\cancel.png" />
+    <Resource Include="Imagenes\Iconos\clientes.png" />
+    <Resource Include="Imagenes\Iconos\clientes2.png" />
+    <Resource Include="Imagenes\Iconos\delete.png" />
+    <Resource Include="Imagenes\Iconos\edit.png" />
+    <Resource Include="Imagenes\Iconos\exclamation.png" />
+    <Resource Include="Imagenes\Iconos\exit.png" />
+    <Resource Include="Imagenes\Iconos\list-8x.png" />
+    <Resource Include="Imagenes\Iconos\menu.png" />
+    <Resource Include="Imagenes\Iconos\ok.png" />
+    <Resource Include="Imagenes\Iconos\plus.png" />
+    <Resource Include="Imagenes\Iconos\view.png" />
+    <Content Include="Imagenes\mov_bbb.mp4" />
+    <Resource Include="Imagenes\tick.png" />
+    <Resource Include="Imagenes\tick2.png" />
+    <Resource Include="Imagenes\view-refresh-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Servicios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,1353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SakilaModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACTOR">
+          <Key>
+            <PropertyRef Name="ACTOR_ID" />
+          </Key>
+          <Property Name="ACTOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="45" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="45" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESS_ID" />
+          </Key>
+          <Property Name="ADDRESS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ADDRESS" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="ADDRESS2" Type="varchar2" MaxLength="50" />
+          <Property Name="DISTRICT" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="CITY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="POSTAL_CODE" Type="varchar2" MaxLength="10" />
+          <Property Name="PHONE" Type="varchar2" MaxLength="20" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="varchar2" MaxLength="25" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CITY_ID" />
+          </Key>
+          <Property Name="CITY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CITY" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="COUNTRY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="COUNTRY_ID" />
+          </Key>
+          <Property Name="COUNTRY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COUNTRY" Type="varchar2" MaxLength="50" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STORE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="45" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="45" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+          <Property Name="ADDRESS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACTIVE" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="date" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM">
+          <Key>
+            <PropertyRef Name="FILM_ID" />
+          </Key>
+          <Property Name="FILM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="clob" />
+          <Property Name="RELEASE_YEAR" Type="varchar2" MaxLength="4" />
+          <Property Name="LANGUAGE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ORIGINAL_LANGUAGE_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="RENTAL_DURATION" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RENTAL_RATE" Type="number" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="LENGTH" Type="number" Precision="38" Scale="0" />
+          <Property Name="REPLACEMENT_COST" Type="number" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="RATING" Type="varchar2" MaxLength="10" />
+          <Property Name="SPECIAL_FEATURES" Type="varchar2" MaxLength="100" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM_ACTOR">
+          <Key>
+            <PropertyRef Name="ACTOR_ID" />
+            <PropertyRef Name="FILM_ID" />
+          </Key>
+          <Property Name="ACTOR_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FILM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM_CATEGORY">
+          <Key>
+            <PropertyRef Name="FILM_ID" />
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="FILM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FILM_TEXT">
+          <Key>
+            <PropertyRef Name="FILM_ID" />
+          </Key>
+          <Property Name="FILM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="varchar2" MaxLength="255" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="clob" />
+        </EntityType>
+        <EntityType Name="INVENTORY">
+          <Key>
+            <PropertyRef Name="INVENTORY_ID" />
+          </Key>
+          <Property Name="INVENTORY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FILM_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STORE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LANGUAGE">
+          <Key>
+            <PropertyRef Name="LANGUAGE_ID" />
+          </Key>
+          <Property Name="LANGUAGE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="PAYMENT_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RENTAL_ID" Type="number" Precision="38" Scale="0" />
+          <Property Name="AMOUNT" Type="number" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="date" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RENTAL">
+          <Key>
+            <PropertyRef Name="RENTAL_ID" />
+          </Key>
+          <Property Name="RENTAL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RENTAL_DATE" Type="date" Nullable="false" />
+          <Property Name="INVENTORY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RETURN_DATE" Type="date" />
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar2" MaxLength="45" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar2" MaxLength="45" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PICTURE" Type="blob" />
+          <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+          <Property Name="STORE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACTIVE" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar2" MaxLength="16" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar2" MaxLength="40" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STORE">
+          <Key>
+            <PropertyRef Name="STORE_ID" />
+          </Key>
+          <Property Name="STORE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MANAGER_STAFF_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ADDRESS_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITY_ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="CITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_COUNTRY">
+          <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="COUNTRY_ID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="COUNTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_STORE">
+          <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STORE">
+              <PropertyRef Name="STORE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="STORE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_ACTOR_ACTOR">
+          <End Role="ACTOR" Type="Self.ACTOR" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTOR">
+              <PropertyRef Name="ACTOR_ID" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="ACTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_ACTOR_FILM">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="FILM_ID" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="FILM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_CATEGORY_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="FILM_CATEGORY" Type="Self.FILM_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="FILM_CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_CATEGORY_FILM">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="FILM_CATEGORY" Type="Self.FILM_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="FILM_ID" />
+            </Principal>
+            <Dependent Role="FILM_CATEGORY">
+              <PropertyRef Name="FILM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_LANGUAGE">
+          <End Role="LANGUAGE" Type="Self.LANGUAGE" Multiplicity="1" />
+          <End Role="FILM" Type="Self.FILM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LANGUAGE">
+              <PropertyRef Name="LANGUAGE_ID" />
+            </Principal>
+            <Dependent Role="FILM">
+              <PropertyRef Name="LANGUAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_LANGUAGE_ORIGINAL">
+          <End Role="LANGUAGE" Type="Self.LANGUAGE" Multiplicity="0..1" />
+          <End Role="FILM" Type="Self.FILM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LANGUAGE">
+              <PropertyRef Name="LANGUAGE_ID" />
+            </Principal>
+            <Dependent Role="FILM">
+              <PropertyRef Name="ORIGINAL_LANGUAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVENTORY_FILM">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="FILM_ID" />
+            </Principal>
+            <Dependent Role="INVENTORY">
+              <PropertyRef Name="FILM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVENTORY_STORE">
+          <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
+          <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STORE">
+              <PropertyRef Name="STORE_ID" />
+            </Principal>
+            <Dependent Role="INVENTORY">
+              <PropertyRef Name="STORE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_RENTAL">
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="0..1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RENTAL">
+              <PropertyRef Name="RENTAL_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="RENTAL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="STAFF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENTAL_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENTAL_INVENTORY">
+          <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="1" />
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVENTORY">
+              <PropertyRef Name="INVENTORY_ID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="INVENTORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENTAL_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="STAFF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_STORE">
+          <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STORE">
+              <PropertyRef Name="STORE_ID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="STORE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STORE_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Principal>
+            <Dependent Role="STORE">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STORE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="STORE">
+              <PropertyRef Name="MANAGER_STAFF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SakilaModelStoreContainer">
+          <EntitySet Name="ACTOR" EntityType="Self.ACTOR" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="FILM" EntityType="Self.FILM" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="FILM_ACTOR" EntityType="Self.FILM_ACTOR" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="FILM_CATEGORY" EntityType="Self.FILM_CATEGORY" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="FILM_TEXT" EntityType="Self.FILM_TEXT" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="INVENTORY" EntityType="Self.INVENTORY" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="LANGUAGE" EntityType="Self.LANGUAGE" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="RENTAL" EntityType="Self.RENTAL" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="SAKILA" store:Type="Tables" />
+          <EntitySet Name="STORE" EntityType="Self.STORE" Schema="SAKILA" store:Type="Tables" />
+          <AssociationSet Name="FK_ADDRESS_CITY" Association="Self.FK_ADDRESS_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_COUNTRY" Association="Self.FK_CITY_COUNTRY">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS" Association="Self.FK_CUSTOMER_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_STORE" Association="Self.FK_CUSTOMER_STORE">
+            <End Role="STORE" EntitySet="STORE" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_ACTOR_ACTOR" Association="Self.FK_FILM_ACTOR_ACTOR">
+            <End Role="ACTOR" EntitySet="ACTOR" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_ACTOR_FILM" Association="Self.FK_FILM_ACTOR_FILM">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_CATEGORY_CATEGORY" Association="Self.FK_FILM_CATEGORY_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="FILM_CATEGORY" EntitySet="FILM_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_CATEGORY_FILM" Association="Self.FK_FILM_CATEGORY_FILM">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="FILM_CATEGORY" EntitySet="FILM_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_LANGUAGE" Association="Self.FK_FILM_LANGUAGE">
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+            <End Role="FILM" EntitySet="FILM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_LANGUAGE_ORIGINAL" Association="Self.FK_FILM_LANGUAGE_ORIGINAL">
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+            <End Role="FILM" EntitySet="FILM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVENTORY_FILM" Association="Self.FK_INVENTORY_FILM">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="INVENTORY" EntitySet="INVENTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVENTORY_STORE" Association="Self.FK_INVENTORY_STORE">
+            <End Role="STORE" EntitySet="STORE" />
+            <End Role="INVENTORY" EntitySet="INVENTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_CUSTOMER" Association="Self.FK_PAYMENT_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_RENTAL" Association="Self.FK_PAYMENT_RENTAL">
+            <End Role="RENTAL" EntitySet="RENTAL" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_STAFF" Association="Self.FK_PAYMENT_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENTAL_CUSTOMER" Association="Self.FK_RENTAL_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENTAL_INVENTORY" Association="Self.FK_RENTAL_INVENTORY">
+            <End Role="INVENTORY" EntitySet="INVENTORY" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENTAL_STAFF" Association="Self.FK_RENTAL_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_ADDRESS" Association="Self.FK_STAFF_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_STORE" Association="Self.FK_STAFF_STORE">
+            <End Role="STORE" EntitySet="STORE" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STORE_ADDRESS" Association="Self.FK_STORE_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="STORE" EntitySet="STORE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STORE_STAFF" Association="Self.FK_STORE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="STORE" EntitySet="STORE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SakilaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACTOR">
+          <Key>
+            <PropertyRef Name="ACTOR_ID" />
+          </Key>
+          <Property Name="ACTOR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FILM_ACTOR" Relationship="Self.FK_FILM_ACTOR_ACTOR" FromRole="ACTOR" ToRole="FILM_ACTOR" />
+        </EntityType>
+        <EntityType Name="ADDRESS">
+          <Key>
+            <PropertyRef Name="ADDRESS_ID" />
+          </Key>
+          <Property Name="ADDRESS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ADDRESS1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DISTRICT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CITY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="POSTAL_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_ADDRESS_CITY" FromRole="ADDRESS" ToRole="CITY" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_CUSTOMER_ADDRESS" FromRole="ADDRESS" ToRole="CUSTOMER" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_STAFF_ADDRESS" FromRole="ADDRESS" ToRole="STAFF" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK_STORE_ADDRESS" FromRole="ADDRESS" ToRole="STORE" />
+        </EntityType>
+        <EntityType Name="CATEGORY">
+          <Key>
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="CATEGORY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FILM_CATEGORY" Relationship="Self.FK_FILM_CATEGORY_CATEGORY" FromRole="CATEGORY" ToRole="FILM_CATEGORY" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="CITY_ID" />
+          </Key>
+          <Property Name="CITY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CITY1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COUNTRY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_ADDRESS_CITY" FromRole="CITY" ToRole="ADDRESS" />
+          <NavigationProperty Name="COUNTRY" Relationship="Self.FK_CITY_COUNTRY" FromRole="CITY" ToRole="COUNTRY" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="COUNTRY_ID" />
+          </Key>
+          <Property Name="COUNTRY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="COUNTRY1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" />
+          <NavigationProperty Name="CITY" Relationship="Self.FK_CITY_COUNTRY" FromRole="COUNTRY" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="CUSTOMER">
+          <Key>
+            <PropertyRef Name="CUSTOMER_ID" />
+          </Key>
+          <Property Name="CUSTOMER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STORE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACTIVE" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_CUSTOMER_ADDRESS" FromRole="CUSTOMER" ToRole="ADDRESS" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK_CUSTOMER_STORE" FromRole="CUSTOMER" ToRole="STORE" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK_PAYMENT_CUSTOMER" FromRole="CUSTOMER" ToRole="PAYMENT" />
+          <NavigationProperty Name="RENTAL" Relationship="Self.FK_RENTAL_CUSTOMER" FromRole="CUSTOMER" ToRole="RENTAL" />
+        </EntityType>
+        <EntityType Name="FILM">
+          <Key>
+            <PropertyRef Name="FILM_ID" />
+          </Key>
+          <Property Name="FILM_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RELEASE_YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="LANGUAGE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ORIGINAL_LANGUAGE_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="RENTAL_DURATION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RENTAL_RATE" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="LENGTH" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="REPLACEMENT_COST" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="RATING" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SPECIAL_FEATURES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FILM_ACTOR" Relationship="Self.FK_FILM_ACTOR_FILM" FromRole="FILM" ToRole="FILM_ACTOR" />
+          <NavigationProperty Name="FILM_CATEGORY" Relationship="Self.FK_FILM_CATEGORY_FILM" FromRole="FILM" ToRole="FILM_CATEGORY" />
+          <NavigationProperty Name="LANGUAGE" Relationship="Self.FK_FILM_LANGUAGE" FromRole="FILM" ToRole="LANGUAGE" />
+          <NavigationProperty Name="LANGUAGE1" Relationship="Self.FK_FILM_LANGUAGE_ORIGINAL" FromRole="FILM" ToRole="LANGUAGE" />
+          <NavigationProperty Name="INVENTORY" Relationship="Self.FK_INVENTORY_FILM" FromRole="FILM" ToRole="INVENTORY" />
+        </EntityType>
+        <EntityType Name="FILM_ACTOR">
+          <Key>
+            <PropertyRef Name="ACTOR_ID" />
+            <PropertyRef Name="FILM_ID" />
+          </Key>
+          <Property Name="ACTOR_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FILM_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ACTOR" Relationship="Self.FK_FILM_ACTOR_ACTOR" FromRole="FILM_ACTOR" ToRole="ACTOR" />
+          <NavigationProperty Name="FILM" Relationship="Self.FK_FILM_ACTOR_FILM" FromRole="FILM_ACTOR" ToRole="FILM" />
+        </EntityType>
+        <EntityType Name="FILM_CATEGORY">
+          <Key>
+            <PropertyRef Name="FILM_ID" />
+            <PropertyRef Name="CATEGORY_ID" />
+          </Key>
+          <Property Name="FILM_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CATEGORY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CATEGORY" Relationship="Self.FK_FILM_CATEGORY_CATEGORY" FromRole="FILM_CATEGORY" ToRole="CATEGORY" />
+          <NavigationProperty Name="FILM" Relationship="Self.FK_FILM_CATEGORY_FILM" FromRole="FILM_CATEGORY" ToRole="FILM" />
+        </EntityType>
+        <EntityType Name="FILM_TEXT">
+          <Key>
+            <PropertyRef Name="FILM_ID" />
+          </Key>
+          <Property Name="FILM_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="TITLE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="INVENTORY">
+          <Key>
+            <PropertyRef Name="INVENTORY_ID" />
+          </Key>
+          <Property Name="INVENTORY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FILM_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STORE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FILM" Relationship="Self.FK_INVENTORY_FILM" FromRole="INVENTORY" ToRole="FILM" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK_INVENTORY_STORE" FromRole="INVENTORY" ToRole="STORE" />
+          <NavigationProperty Name="RENTAL" Relationship="Self.FK_RENTAL_INVENTORY" FromRole="INVENTORY" ToRole="RENTAL" />
+        </EntityType>
+        <EntityType Name="LANGUAGE">
+          <Key>
+            <PropertyRef Name="LANGUAGE_ID" />
+          </Key>
+          <Property Name="LANGUAGE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="FILM" Relationship="Self.FK_FILM_LANGUAGE" FromRole="LANGUAGE" ToRole="FILM" />
+          <NavigationProperty Name="FILM1" Relationship="Self.FK_FILM_LANGUAGE_ORIGINAL" FromRole="LANGUAGE" ToRole="FILM" />
+        </EntityType>
+        <EntityType Name="PAYMENT">
+          <Key>
+            <PropertyRef Name="PAYMENT_ID" />
+          </Key>
+          <Property Name="PAYMENT_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="STAFF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RENTAL_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="AMOUNT" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="PAYMENT_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_PAYMENT_CUSTOMER" FromRole="PAYMENT" ToRole="CUSTOMER" />
+          <NavigationProperty Name="RENTAL" Relationship="Self.FK_PAYMENT_RENTAL" FromRole="PAYMENT" ToRole="RENTAL" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_PAYMENT_STAFF" FromRole="PAYMENT" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="RENTAL">
+          <Key>
+            <PropertyRef Name="RENTAL_ID" />
+          </Key>
+          <Property Name="RENTAL_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RENTAL_DATE" Type="DateTime" Nullable="false" />
+          <Property Name="INVENTORY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="CUSTOMER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="RETURN_DATE" Type="DateTime" />
+          <Property Name="STAFF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_RENTAL_CUSTOMER" FromRole="RENTAL" ToRole="CUSTOMER" />
+          <NavigationProperty Name="INVENTORY" Relationship="Self.FK_RENTAL_INVENTORY" FromRole="RENTAL" ToRole="INVENTORY" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK_PAYMENT_RENTAL" FromRole="RENTAL" ToRole="PAYMENT" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_RENTAL_STAFF" FromRole="RENTAL" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="STAFF">
+          <Key>
+            <PropertyRef Name="STAFF_ID" />
+          </Key>
+          <Property Name="STAFF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="PICTURE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STORE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ACTIVE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_STAFF_ADDRESS" FromRole="STAFF" ToRole="ADDRESS" />
+          <NavigationProperty Name="PAYMENT" Relationship="Self.FK_PAYMENT_STAFF" FromRole="STAFF" ToRole="PAYMENT" />
+          <NavigationProperty Name="RENTAL" Relationship="Self.FK_RENTAL_STAFF" FromRole="STAFF" ToRole="RENTAL" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK_STAFF_STORE" FromRole="STAFF" ToRole="STORE" />
+          <NavigationProperty Name="STORE1" Relationship="Self.FK_STORE_STAFF" FromRole="STAFF" ToRole="STORE" />
+        </EntityType>
+        <EntityType Name="STORE">
+          <Key>
+            <PropertyRef Name="STORE_ID" />
+          </Key>
+          <Property Name="STORE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MANAGER_STAFF_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="ADDRESS_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="ADDRESS" Relationship="Self.FK_STORE_ADDRESS" FromRole="STORE" ToRole="ADDRESS" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK_CUSTOMER_STORE" FromRole="STORE" ToRole="CUSTOMER" />
+          <NavigationProperty Name="INVENTORY" Relationship="Self.FK_INVENTORY_STORE" FromRole="STORE" ToRole="INVENTORY" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK_STAFF_STORE" FromRole="STORE" ToRole="STAFF" />
+          <NavigationProperty Name="STAFF1" Relationship="Self.FK_STORE_STAFF" FromRole="STORE" ToRole="STAFF" />
+        </EntityType>
+        <Association Name="FK_FILM_ACTOR_ACTOR">
+          <End Role="ACTOR" Type="Self.ACTOR" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACTOR">
+              <PropertyRef Name="ACTOR_ID" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="ACTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ADDRESS_CITY">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="1" />
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="CITY_ID" />
+            </Principal>
+            <Dependent Role="ADDRESS">
+              <PropertyRef Name="CITY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STORE_ADDRESS">
+          <End Role="ADDRESS" Type="Self.ADDRESS" Multiplicity="1" />
+          <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADDRESS">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Principal>
+            <Dependent Role="STORE">
+              <PropertyRef Name="ADDRESS_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_CATEGORY_CATEGORY">
+          <End Role="CATEGORY" Type="Self.CATEGORY" Multiplicity="1" />
+          <End Role="FILM_CATEGORY" Type="Self.FILM_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Principal>
+            <Dependent Role="FILM_CATEGORY">
+              <PropertyRef Name="CATEGORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_COUNTRY">
+          <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="Self.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="COUNTRY_ID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="COUNTRY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CUSTOMER_STORE">
+          <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STORE">
+              <PropertyRef Name="STORE_ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="STORE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENTAL_CUSTOMER">
+          <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CUSTOMER">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="CUSTOMER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_ACTOR_FILM">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="FILM_ACTOR" Type="Self.FILM_ACTOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="FILM_ID" />
+            </Principal>
+            <Dependent Role="FILM_ACTOR">
+              <PropertyRef Name="FILM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_CATEGORY_FILM">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="FILM_CATEGORY" Type="Self.FILM_CATEGORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="FILM_ID" />
+            </Principal>
+            <Dependent Role="FILM_CATEGORY">
+              <PropertyRef Name="FILM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_LANGUAGE">
+          <End Role="LANGUAGE" Type="Self.LANGUAGE" Multiplicity="1" />
+          <End Role="FILM" Type="Self.FILM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LANGUAGE">
+              <PropertyRef Name="LANGUAGE_ID" />
+            </Principal>
+            <Dependent Role="FILM">
+              <PropertyRef Name="LANGUAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FILM_LANGUAGE_ORIGINAL">
+          <End Role="LANGUAGE" Type="Self.LANGUAGE" Multiplicity="0..1" />
+          <End Role="FILM" Type="Self.FILM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LANGUAGE">
+              <PropertyRef Name="LANGUAGE_ID" />
+            </Principal>
+            <Dependent Role="FILM">
+              <PropertyRef Name="ORIGINAL_LANGUAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVENTORY_FILM">
+          <End Role="FILM" Type="Self.FILM" Multiplicity="1" />
+          <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FILM">
+              <PropertyRef Name="FILM_ID" />
+            </Principal>
+            <Dependent Role="INVENTORY">
+              <PropertyRef Name="FILM_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_INVENTORY_STORE">
+          <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
+          <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STORE">
+              <PropertyRef Name="STORE_ID" />
+            </Principal>
+            <Dependent Role="INVENTORY">
+              <PropertyRef Name="STORE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENTAL_INVENTORY">
+          <End Role="INVENTORY" Type="Self.INVENTORY" Multiplicity="1" />
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVENTORY">
+              <PropertyRef Name="INVENTORY_ID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="INVENTORY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_RENTAL">
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="0..1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RENTAL">
+              <PropertyRef Name="RENTAL_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="RENTAL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PAYMENT_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="PAYMENT" Type="Self.PAYMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="PAYMENT">
+              <PropertyRef Name="STAFF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RENTAL_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="RENTAL" Type="Self.RENTAL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="RENTAL">
+              <PropertyRef Name="STAFF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STAFF_STORE">
+          <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STORE">
+              <PropertyRef Name="STORE_ID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="STORE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_STORE_STAFF">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="STAFF_ID" />
+            </Principal>
+            <Dependent Role="STORE">
+              <PropertyRef Name="MANAGER_STAFF_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SakilaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACTOR" EntityType="Self.ACTOR" />
+          <EntitySet Name="ADDRESS" EntityType="Self.ADDRESS" />
+          <EntitySet Name="CATEGORY" EntityType="Self.CATEGORY" />
+          <EntitySet Name="CITY" EntityType="Self.CITY" />
+          <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" />
+          <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" />
+          <EntitySet Name="FILM" EntityType="Self.FILM" />
+          <EntitySet Name="FILM_ACTOR" EntityType="Self.FILM_ACTOR" />
+          <EntitySet Name="FILM_CATEGORY" EntityType="Self.FILM_CATEGORY" />
+          <EntitySet Name="FILM_TEXT" EntityType="Self.FILM_TEXT" />
+          <EntitySet Name="INVENTORY" EntityType="Self.INVENTORY" />
+          <EntitySet Name="LANGUAGE" EntityType="Self.LANGUAGE" />
+          <EntitySet Name="PAYMENT" EntityType="Self.PAYMENT" />
+          <EntitySet Name="RENTAL" EntityType="Self.RENTAL" />
+          <EntitySet Name="STAFF" EntityType="Self.STAFF" />
+          <EntitySet Name="STORE" EntityType="Self.STORE" />
+          <AssociationSet Name="FK_FILM_ACTOR_ACTOR" Association="Self.FK_FILM_ACTOR_ACTOR">
+            <End Role="ACTOR" EntitySet="ACTOR" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ADDRESS_CITY" Association="Self.FK_ADDRESS_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_ADDRESS" Association="Self.FK_CUSTOMER_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_ADDRESS" Association="Self.FK_STAFF_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STORE_ADDRESS" Association="Self.FK_STORE_ADDRESS">
+            <End Role="ADDRESS" EntitySet="ADDRESS" />
+            <End Role="STORE" EntitySet="STORE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_CATEGORY_CATEGORY" Association="Self.FK_FILM_CATEGORY_CATEGORY">
+            <End Role="CATEGORY" EntitySet="CATEGORY" />
+            <End Role="FILM_CATEGORY" EntitySet="FILM_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_COUNTRY" Association="Self.FK_CITY_COUNTRY">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CUSTOMER_STORE" Association="Self.FK_CUSTOMER_STORE">
+            <End Role="STORE" EntitySet="STORE" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_CUSTOMER" Association="Self.FK_PAYMENT_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENTAL_CUSTOMER" Association="Self.FK_RENTAL_CUSTOMER">
+            <End Role="CUSTOMER" EntitySet="CUSTOMER" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_ACTOR_FILM" Association="Self.FK_FILM_ACTOR_FILM">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="FILM_ACTOR" EntitySet="FILM_ACTOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_CATEGORY_FILM" Association="Self.FK_FILM_CATEGORY_FILM">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="FILM_CATEGORY" EntitySet="FILM_CATEGORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_LANGUAGE" Association="Self.FK_FILM_LANGUAGE">
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+            <End Role="FILM" EntitySet="FILM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FILM_LANGUAGE_ORIGINAL" Association="Self.FK_FILM_LANGUAGE_ORIGINAL">
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+            <End Role="FILM" EntitySet="FILM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVENTORY_FILM" Association="Self.FK_INVENTORY_FILM">
+            <End Role="FILM" EntitySet="FILM" />
+            <End Role="INVENTORY" EntitySet="INVENTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_INVENTORY_STORE" Association="Self.FK_INVENTORY_STORE">
+            <End Role="STORE" EntitySet="STORE" />
+            <End Role="INVENTORY" EntitySet="INVENTORY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENTAL_INVENTORY" Association="Self.FK_RENTAL_INVENTORY">
+            <End Role="INVENTORY" EntitySet="INVENTORY" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_RENTAL" Association="Self.FK_PAYMENT_RENTAL">
+            <End Role="RENTAL" EntitySet="RENTAL" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PAYMENT_STAFF" Association="Self.FK_PAYMENT_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="PAYMENT" EntitySet="PAYMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RENTAL_STAFF" Association="Self.FK_RENTAL_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="RENTAL" EntitySet="RENTAL" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STAFF_STORE" Association="Self.FK_STAFF_STORE">
+            <End Role="STORE" EntitySet="STORE" />
+            <End Role="STAFF" EntitySet="STAFF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_STORE_STAFF" Association="Self.FK_STORE_STAFF">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="STORE" EntitySet="STORE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SakilaModelStoreContainer" CdmEntityContainer="SakilaEntities">
+          <EntitySetMapping Name="ACTOR">
+            <EntityTypeMapping TypeName="SakilaModel.ACTOR">
+              <MappingFragment StoreEntitySet="ACTOR">
+                <ScalarProperty Name="ACTOR_ID" ColumnName="ACTOR_ID" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADDRESS">
+            <EntityTypeMapping TypeName="SakilaModel.ADDRESS">
+              <MappingFragment StoreEntitySet="ADDRESS">
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="ADDRESS1" ColumnName="ADDRESS" />
+                <ScalarProperty Name="ADDRESS2" ColumnName="ADDRESS2" />
+                <ScalarProperty Name="DISTRICT" ColumnName="DISTRICT" />
+                <ScalarProperty Name="CITY_ID" ColumnName="CITY_ID" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATEGORY">
+            <EntityTypeMapping TypeName="SakilaModel.CATEGORY">
+              <MappingFragment StoreEntitySet="CATEGORY">
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITY">
+            <EntityTypeMapping TypeName="SakilaModel.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="CITY_ID" ColumnName="CITY_ID" />
+                <ScalarProperty Name="CITY1" ColumnName="CITY" />
+                <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTRY">
+            <EntityTypeMapping TypeName="SakilaModel.COUNTRY">
+              <MappingFragment StoreEntitySet="COUNTRY">
+                <ScalarProperty Name="COUNTRY_ID" ColumnName="COUNTRY_ID" />
+                <ScalarProperty Name="COUNTRY1" ColumnName="COUNTRY" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CUSTOMER">
+            <EntityTypeMapping TypeName="SakilaModel.CUSTOMER">
+              <MappingFragment StoreEntitySet="CUSTOMER">
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="STORE_ID" ColumnName="STORE_ID" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM">
+            <EntityTypeMapping TypeName="SakilaModel.FILM">
+              <MappingFragment StoreEntitySet="FILM">
+                <ScalarProperty Name="FILM_ID" ColumnName="FILM_ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="RELEASE_YEAR" ColumnName="RELEASE_YEAR" />
+                <ScalarProperty Name="LANGUAGE_ID" ColumnName="LANGUAGE_ID" />
+                <ScalarProperty Name="ORIGINAL_LANGUAGE_ID" ColumnName="ORIGINAL_LANGUAGE_ID" />
+                <ScalarProperty Name="RENTAL_DURATION" ColumnName="RENTAL_DURATION" />
+                <ScalarProperty Name="RENTAL_RATE" ColumnName="RENTAL_RATE" />
+                <ScalarProperty Name="LENGTH" ColumnName="LENGTH" />
+                <ScalarProperty Name="REPLACEMENT_COST" ColumnName="REPLACEMENT_COST" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="SPECIAL_FEATURES" ColumnName="SPECIAL_FEATURES" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM_ACTOR">
+            <EntityTypeMapping TypeName="SakilaModel.FILM_ACTOR">
+              <MappingFragment StoreEntitySet="FILM_ACTOR">
+                <ScalarProperty Name="ACTOR_ID" ColumnName="ACTOR_ID" />
+                <ScalarProperty Name="FILM_ID" ColumnName="FILM_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM_CATEGORY">
+            <EntityTypeMapping TypeName="SakilaModel.FILM_CATEGORY">
+              <MappingFragment StoreEntitySet="FILM_CATEGORY">
+                <ScalarProperty Name="FILM_ID" ColumnName="FILM_ID" />
+                <ScalarProperty Name="CATEGORY_ID" ColumnName="CATEGORY_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FILM_TEXT">
+            <EntityTypeMapping TypeName="SakilaModel.FILM_TEXT">
+              <MappingFragment StoreEntitySet="FILM_TEXT">
+                <ScalarProperty Name="FILM_ID" ColumnName="FILM_ID" />
+                <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVENTORY">
+            <EntityTypeMapping TypeName="SakilaModel.INVENTORY">
+              <MappingFragment StoreEntitySet="INVENTORY">
+                <ScalarProperty Name="INVENTORY_ID" ColumnName="INVENTORY_ID" />
+                <ScalarProperty Name="FILM_ID" ColumnName="FILM_ID" />
+                <ScalarProperty Name="STORE_ID" ColumnName="STORE_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LANGUAGE">
+            <EntityTypeMapping TypeName="SakilaModel.LANGUAGE">
+              <MappingFragment StoreEntitySet="LANGUAGE">
+                <ScalarProperty Name="LANGUAGE_ID" ColumnName="LANGUAGE_ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAYMENT">
+            <EntityTypeMapping TypeName="SakilaModel.PAYMENT">
+              <MappingFragment StoreEntitySet="PAYMENT">
+                <ScalarProperty Name="PAYMENT_ID" ColumnName="PAYMENT_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="RENTAL_ID" ColumnName="RENTAL_ID" />
+                <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+                <ScalarProperty Name="PAYMENT_DATE" ColumnName="PAYMENT_DATE" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RENTAL">
+            <EntityTypeMapping TypeName="SakilaModel.RENTAL">
+              <MappingFragment StoreEntitySet="RENTAL">
+                <ScalarProperty Name="RENTAL_ID" ColumnName="RENTAL_ID" />
+                <ScalarProperty Name="RENTAL_DATE" ColumnName="RENTAL_DATE" />
+                <ScalarProperty Name="INVENTORY_ID" ColumnName="INVENTORY_ID" />
+                <ScalarProperty Name="CUSTOMER_ID" ColumnName="CUSTOMER_ID" />
+                <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAFF">
+            <EntityTypeMapping TypeName="SakilaModel.STAFF">
+              <MappingFragment StoreEntitySet="STAFF">
+                <ScalarProperty Name="STAFF_ID" ColumnName="STAFF_ID" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="PICTURE" ColumnName="PICTURE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="STORE_ID" ColumnName="STORE_ID" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STORE">
+            <EntityTypeMapping TypeName="SakilaModel.STORE">
+              <MappingFragment StoreEntitySet="STORE">
+                <ScalarProperty Name="STORE_ID" ColumnName="STORE_ID" />
+                <ScalarProperty Name="MANAGER_STAFF_ID" ColumnName="MANAGER_STAFF_ID" />
+                <ScalarProperty Name="ADDRESS_ID" ColumnName="ADDRESS_ID" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
