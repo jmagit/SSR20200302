@@ -30,7 +30,7 @@
                 <Label Content="{Binding Precio}" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" Visibility="{Binding Descatalogado, Converter={StaticResource BooleanToVisibilityConverter}}" >
-                <Label Content="Des-catalogado" Foreground="#FFFD0000" />
+                <Label Content="Des-catalogado" Foreground="{DynamicResource ColorDescatalogado}" />
             </StackPanel>
         </WrapPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1" Margin="0,0,5,5">

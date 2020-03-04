@@ -83,6 +83,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Domains.Services\Domains.Services.csproj">
+      <Project>{1ce412f2-ce5e-4131-a376-c1a55c468caf}</Project>
+      <Name>Domains.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{15907b44-6d42-4a7e-8659-9ebc19432d76}</Project>
       <Name>Entidades</Name>

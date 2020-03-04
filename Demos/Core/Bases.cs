@@ -21,4 +21,14 @@ namespace Aplication.Core {
         delete
     }
 
+    public class Elemento<Key> {
+        public Key Value { get; set; }
+        public string Display { get; set; }
+
+        public Elemento(Key Value, string Display) {
+            this.Value = Value;
+            this.Display = Display;
+        }
+    }
+
 }

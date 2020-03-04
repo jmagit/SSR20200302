@@ -30,6 +30,7 @@
         <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding Elemento.Descripcion, Converter={StaticResource StringToNullConverter}, NotifyOnValidationError=True, ValidatesOnExceptions=True}" MinWidth="80" Style="{DynamicResource TextBox.Campo}" Grid.ColumnSpan="4" TextWrapping="Wrap" />
         <Label Grid.Row="3" Grid.Column="0" Content="Precio:" />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Elemento.Precio, NotifyOnValidationError=True, ValidatesOnExceptions=True}" VerticalContentAlignment="Center" MinWidth="200" Style="{DynamicResource TextBox.Campo}" />
+        <ComboBox Grid.Row="3" Grid.Column="3" ItemsSource="{Binding ListaDeCategorias}" DisplayMemberPath="Display" SelectedValuePath="Value" SelectedValue="{Binding Elemento.IdCategoria}" />
         <CheckBox Margin="5,0,0,0" Content="Des-catalogado" VerticalContentAlignment="Bottom" IsChecked="{Binding Elemento.Descatalogado}" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
         <StackPanel Grid.Row="4" Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right"  Margin="0,0,5,5" Grid.ColumnSpan="2">
             <Button Content="Aceptar" Command="{Binding Accept, Mode=OneWay}" Style="{DynamicResource Button.Comando.Aceptar}" Margin="0,0,5,0" IsDefault="True" />

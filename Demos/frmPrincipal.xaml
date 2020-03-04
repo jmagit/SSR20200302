@@ -14,11 +14,12 @@
                     <GradientStop Color="#FF69CCF7" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
+            <Button x:Name="btnActores" Content="Actores" Click="btnActores_Click"  />
+            <Button Content="Personas" Click="Button_Click_3" />
+            <Button Content="Productos" Click="Button_Click_4" />
             <Button Content="Ventana Paralela" Click="Button_Click" />
             <Button Content="Ventana Dependiente" Click="Button_Click_1" />
             <Button Content="Cuadro de dialogo" Click="Button_Click_2" />
-            <Button Content="Personas" Click="Button_Click_3" />
-            <Button Content="Productos" Click="Button_Click_4" />
             <Button Content="Cierra" Click="Button_Click_5" />
             <Button Content="Salir" Click="Button_Click_6" />
             <Button Content="web" Click="Button_Click_7" />

@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel d:DataContext="{d:DesignInstance Type={x:Type vm:ProductosVM}}">
         <DockPanel.Resources>
-            <CollectionViewSource x:Key="ListaDeClientes" Source="{Binding Listado}" >
+            <CollectionViewSource x:Key="ListaDeProductos" Source="{Binding Listado}" >
                 <CollectionViewSource.SortDescriptions>
                     <ComponentModel:SortDescription Direction="Ascending" PropertyName="Nombre"/>
                 </CollectionViewSource.SortDescriptions>
@@ -24,7 +24,7 @@
             <Button Command="{Binding Delete, Mode=OneWay}" CommandParameter="{Binding SelectedValue, ElementName=lbListado}" IsEnabled="{Binding SelectedItem, Converter={StaticResource NotNullToBooleanConverter}, ElementName=lbListado}" Style="{DynamicResource Button.Comando.Borrar}" Margin="0,0,5,0" />
             <Button Command="{Binding Close, Mode=OneWay}" Style="{DynamicResource Button.Comando.Salir}" Margin="0,0,5,0" />
         </StackPanel>
-        <ListBox x:Name="lbListado" ItemsSource="{Binding Mode=OneWay, Source={StaticResource ListaDeClientes}}" SelectedValuePath="Id" Visibility="{Binding Visibility, Converter={StaticResource InvertVisibilityConverter}, ElementName=form}" SelectedItem="{Binding Seleccionado}" >
+        <ListBox x:Name="lbListado" ItemsSource="{Binding Mode=OneWay, Source={StaticResource ListaDeProductos}}" SelectedValuePath="Id" Visibility="{Binding Visibility, Converter={StaticResource InvertVisibilityConverter}, ElementName=form}" SelectedItem="{Binding Seleccionado}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -36,7 +36,7 @@
                             <Setter TargetName="txtPrecio" Property="Visibility" Value="Collapsed" />
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Descatalogado}" Value="true">
-                            <Setter TargetName="txtNombre" Property="Foreground" Value="Red" />
+                            <Setter TargetName="txtNombre" Property="Foreground" Value="{StaticResource ColorDescatalogado}" />
                         </DataTrigger>
                     </DataTemplate.Triggers>
                 </DataTemplate>

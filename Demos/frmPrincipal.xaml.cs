@@ -48,10 +48,11 @@ namespace Demos {
 
         private ucPersonas personas = null;
         private void Button_Click_3(object sender, RoutedEventArgs e) {
-            if(personas == null) {
-                personas = new ucPersonas();
-            }
-            ccHost.Content = personas;
+            //if(personas == null) {
+            //    personas = new ucPersonas();
+            //}
+            //ccHost.Content = personas;
+            ccHost.Content = new ucProductos();
         }
 
         private void abrir(UserControl uc, object vm = null) {
@@ -104,6 +105,12 @@ namespace Demos {
             wb.Navigate("https://iga.emea.corpinter.net/guestwifi/ES157i/connected.html");
             ccHost.Content = wb;
 
+        }
+
+        private void btnActores_Click(object sender, RoutedEventArgs e) {
+            var uc = new ucActores();
+            uc.DataContext = new ActoresVM();
+            ccHost.Content = uc;
         }
     }
 }

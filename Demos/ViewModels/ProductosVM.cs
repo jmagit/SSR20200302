@@ -9,10 +9,12 @@ using Datos;
 using Entidades;
 using Aplication.Core;
 using Demos.Servicios;
+using Domains.Services;
 
 namespace Demos.ViewModels {
     public class ProductosVM : ObservableBase, IClosed, ICanClosed {
-        private IProductosService srv = new ProductosServiceClient();
+        //private IProductosService srv = new ProductosServiceClient();
+        private ProductosService srv = new ProductosService();
 
         public event EventHandler<CancelEventArgs> Closed;
         public event EventHandler<EventArgs> Aceptado;
@@ -110,7 +112,7 @@ namespace Demos.ViewModels {
                         srv.Add(Elemento);
                         cancelEdit();
                         OnAceptado();
-                    });
+                    }, x => Elemento != null && Elemento.IsValid);
                     NotifyPropertyChanged(nameof(Accept));
                 });
             }
@@ -125,7 +127,7 @@ namespace Demos.ViewModels {
                             srv.Modify(Elemento);
                             cancelEdit();
                             OnAceptado();
-                        });
+                        }, x => Elemento != null && Elemento.IsValid);
                         NotifyPropertyChanged(nameof(Accept));
                     }
                 });
@@ -137,6 +139,7 @@ namespace Demos.ViewModels {
                     if (cmdArg != null) {
                         Elemento = srv.GetById((int)cmdArg);
                         Modo = EstadoCRUD.view;
+                        accept = Cancel;
                     }
                 });
             }
@@ -145,7 +148,8 @@ namespace Demos.ViewModels {
             get {
                 return new DelegateCommand(cmdArg => {
                     if (cmdArg != null) {
-                        srv.RemoveById((int)cmdArg);
+                        // srv.RemoveById((int)cmdArg);
+                        srv.Remove((int)cmdArg);
                         //Modo = EstadoCRUD.delete;
                         List.Execute();
                     }
@@ -165,35 +169,9 @@ namespace Demos.ViewModels {
                 });
             }
         }
-        public DelegateCommand Accept {
-            get {
-                return new DelegateCommand(cmdArg => {
-                    switch (Modo) {
-                        case EstadoCRUD.add:
-                            srv.Add(Elemento);
-                            Cancel.Execute();
-                            break;
-                        case EstadoCRUD.edit:
-                            srv.Modify(Elemento);
-                            Cancel.Execute();
-                            break;
-                    }
-                }, cmdArg => Elemento != null && Elemento.IsValid);
-            }
-        }
         protected DelegateCommand accept = null;
-        // protected DelegateCommand accept = new DelegateCommand(cmdArg => {
-        //            switch (Modo) {
-        //                case EstadoCRUD.add:
-        //                    srv.Add(Elemento);
-        //                    Cancel.Execute();
-        //                    break;
-        //                case EstadoCRUD.edit:
-        //                    srv.Modify(Elemento);
-        //                    Cancel.Execute();
-        //                    break;
-        //            }
-        //        }, cmdArg => Elemento != null && Elemento.IsValid);
+        public DelegateCommand Accept => accept;
+
 
         public DelegateCommand Close {
             get {
@@ -202,5 +180,16 @@ namespace Demos.ViewModels {
                 });
             }
         }
+
+        public ObservableCollection<Elemento<int>> ListaDeCategorias {
+            get {
+                var rslt = new ObservableCollection<Elemento<int>>();
+                rslt.Add(new Elemento<int>(0, "General"));
+                rslt.Add(new Elemento<int>(1, "Buena"));
+                rslt.Add(new Elemento<int>(2, "Mala"));
+                return rslt;
+            }
+        }
+
     }
 }

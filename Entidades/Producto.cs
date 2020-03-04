@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Entidades {
     public partial class Producto : EntityBase {
         private int id;
         [DataMember]
+        [Required]
         public int Id {
             get => id;
             set {
@@ -89,5 +91,22 @@ namespace Entidades {
         }
         partial void PostDescatalogado(bool descatalogado, bool value);
         partial void PreDescatalogado(bool descatalogado, bool value);
+
+        private int idCategoria;
+        [DataMember]
+        public int IdCategoria {
+            get => idCategoria;
+            set {
+                if (idCategoria != value) {
+                    PreId(idCategoria, value);
+                    idCategoria = value;
+                    PostId(idCategoria, value);
+                    NotifyPropertyChanged();
+                }
+            }
+        }
+        partial void PostIdCategoria(int idCategoria, int value);
+        partial void PreIdCategoria(int idCategoria, int value);
+
     }
 }

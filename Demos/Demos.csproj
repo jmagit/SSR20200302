@@ -47,6 +47,7 @@
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.6.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -100,6 +101,9 @@
     <Compile Include="Views\ProductosView.xaml.cs">
       <DependentUpon>ProductosView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ucActores.xaml.cs">
+      <DependentUpon>ucActores.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucPersonalizado.xaml.cs">
       <DependentUpon>ucPersonalizado.xaml</DependentUpon>
     </Compile>
@@ -145,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ProductosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ucActores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +211,10 @@
     <ProjectReference Include="..\Datos\Datos.csproj">
       <Project>{8e2d2e41-f0a8-4d94-88d8-2a0e605c0778}</Project>
       <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domains.Services\Domains.Services.csproj">
+      <Project>{1CE412F2-CE5E-4131-A376-C1A55C468CAF}</Project>
+      <Name>Domains.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{15907b44-6d42-4a7e-8659-9ebc19432d76}</Project>
