@@ -110,8 +110,8 @@
     <Compile Include="Views\ucPersonas.xaml.cs">
       <DependentUpon>ucPersonas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ucProductos.xaml.cs">
-      <DependentUpon>ucProductos.xaml</DependentUpon>
+    <Compile Include="Views\ucDocumentos.xaml.cs">
+      <DependentUpon>ucDocumentos.xaml</DependentUpon>
     </Compile>
     <Page Include="cDlg.xaml">
       <SubType>Designer</SubType>
@@ -164,7 +164,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ucProductos.xaml">
+    <Page Include="Views\ucDocumentos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -48,11 +48,10 @@ namespace Demos {
 
         private ucPersonas personas = null;
         private void Button_Click_3(object sender, RoutedEventArgs e) {
-            //if(personas == null) {
-            //    personas = new ucPersonas();
-            //}
-            //ccHost.Content = personas;
-            ccHost.Content = new ucProductos();
+            if (personas == null) {
+                personas = new ucPersonas();
+            }
+            ccHost.Content = personas;
         }
 
         private void abrir(UserControl uc, object vm = null) {
@@ -111,6 +110,10 @@ namespace Demos {
             var uc = new ucActores();
             uc.DataContext = new ActoresVM();
             ccHost.Content = uc;
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e) {
+            ccHost.Content = new ucDocumentos();
         }
     }
 }

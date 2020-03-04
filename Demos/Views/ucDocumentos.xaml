@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="Demos.Views.ucDocumentos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Demos.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <!--<TextBlock HorizontalAlignment="Left" Margin="33,25,0,0" TextWrapping="Wrap" Text="Productos" VerticalAlignment="Top" FontSize="36" FontWeight="Bold"/>-->
+        <FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+            <FlowDocument>
+                <Paragraph>
+                    <Image Source="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" Width="90" Height="90" Margin="0,0,30,0" />
+                    <Run FontSize="120">WPF</Run>
+                </Paragraph>
+
+                <Paragraph>
+                    WPF, which stands for
+                    <Bold>Windows Presentation Foundation</Bold> ,
+                    is Microsoft's latest approach to a GUI framework, used with the .NET framework.
+                    Some advantages include:
+                </Paragraph>
+
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            It's newer and thereby more in tune with current standards
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Microsoft is using it for a lot of new applications, e.g. Visual Studio
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            It's more flexible, so you can do more things without having to write or buy new controls
+                        </Paragraph>
+                    </ListItem>
+                </List>
+
+                <Table CellSpacing="0">
+                    <TableRowGroup>
+                        <TableRow Background="Gainsboro" FontWeight="Bold">
+                            <TableCell></TableCell>
+                            <TableCell>
+                                <Paragraph TextAlignment="Right">WinForms</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph TextAlignment="Right">WPF</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell Background="Gainsboro" FontWeight="Bold">
+                                <Paragraph>Lines of code</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph TextAlignment="Right">1.718.000</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph TextAlignment="Right">1.542.000</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                    <TableRowGroup>
+                        <TableRow>
+                            <TableCell Background="Gainsboro" FontWeight="Bold">
+                                <Paragraph>Developers</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph TextAlignment="Right">633.000</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph TextAlignment="Right">981.000</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+                <Paragraph Foreground="Silver" FontStyle="Italic">A table of made up WinForms/WPF numbers</Paragraph>
+                <Paragraph>
+                    <Bold>Some bold text in the paragraph.</Bold>
+                    Some text that is not bold.
+                </Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>ListItem 1</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>ListItem 2</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>ListItem 3</Paragraph>
+                    </ListItem>
+                </List>
+                <Paragraph>
+                    <Bold>Some bold text in the paragraph.</Bold>
+                    Some text that is not bold.
+                </Paragraph>
+                <Paragraph>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vulputate metus sit amet neque tempus condimentum. In ut vehicula lectus, eget consectetur leo. Sed at dapibus sapien. Curabitur in maximus metus. In ut leo fringilla metus venenatis egestas. Maecenas aliquet, lacus vel semper ullamcorper, mauris risus scelerisque erat, ornare sodales leo ex quis nisi. Ut ut nisl finibus, ornare leo at, vestibulum orci. Sed ornare tortor ut malesuada commodo. Phasellus congue et elit vitae consectetur. Nullam ut ligula sit amet tellus hendrerit commodo.
+                </Paragraph>
+                <Paragraph>
+                    Aenean ut erat leo. Morbi tristique velit eu efficitur vulputate. Morbi mi diam, auctor in elit quis, dictum placerat neque. Donec a nunc magna. Donec lacinia varius convallis. Nulla sed mauris dui. Curabitur lorem tellus, scelerisque sed dui quis, tincidunt convallis leo. Etiam turpis velit, placerat at sem sed, malesuada aliquet purus. Duis nibh leo, mattis nec est eu, consectetur laoreet orci. Pellentesque elit dui, condimentum quis volutpat sit amet, maximus sit amet est. Vestibulum placerat tempus nulla, in suscipit ligula placerat ut. Proin nec enim nulla.
+                </Paragraph>
+                <Paragraph>
+                    Curabitur eu fringilla erat. Morbi volutpat, nunc ac efficitur pretium, massa augue vulputate magna, at pulvinar lacus purus sit amet arcu. Donec sit amet ex rutrum, finibus magna nec, sagittis tortor. Ut mollis pellentesque luctus. Donec non luctus quam. Suspendisse fringilla viverra erat, quis tristique erat luctus vitae. In ac magna hendrerit, mattis nulla eget, porta est. Duis et ipsum quis nibh pharetra condimentum nec in felis. Nam lobortis nisl quis eros placerat dapibus. Sed ultricies convallis vestibulum.
+                </Paragraph>
+                <Paragraph>
+                    Ut et maximus sapien. Nullam sem est, pretium quis feugiat nec, accumsan iaculis odio. Donec volutpat vehicula luctus. Proin ultricies dignissim enim, quis viverra elit rhoncus sed. Proin tincidunt ex non turpis tristique aliquam. Nam id venenatis augue. Nunc a molestie elit. Curabitur pulvinar ut neque ac tempor. In commodo tincidunt aliquam. Curabitur mollis, felis sit amet pellentesque consectetur, elit ante suscipit mauris, in lobortis dolor mi non metus. Etiam eget leo sit amet dui bibendum facilisis id a ligula. Praesent fermentum viverra imperdiet. Cras sed suscipit nunc, quis dignissim magna. Sed vitae odio aliquet, elementum ligula pulvinar, ultrices magna. Sed condimentum justo sed semper interdum.
+                </Paragraph>
+                <Paragraph>
+                    Vivamus pharetra, ligula a tempus pharetra, eros diam consequat nisl, non malesuada nisl magna viverra enim. Maecenas tincidunt erat sed convallis tristique. Praesent nec massa nisi. Donec arcu ligula, cursus ut ex non, condimentum tristique turpis. Curabitur sit amet auctor massa. Fusce dapibus, nulla vel venenatis interdum, tellus risus finibus dolor, in lobortis lorem enim in metus. In venenatis id lorem ac dictum. Donec commodo neque a ex imperdiet sodales. Suspendisse lorem magna, porta at feugiat sed, imperdiet sed nisi. Curabitur volutpat nunc turpis, eu pretium leo tempus et. Praesent faucibus viverra ligula, a laoreet sapien rutrum ac. Sed eget lobortis sem. Vivamus iaculis lacus id augue interdum, eu accumsan ligula feugiat. Duis eu porttitor purus, vitae volutpat ligula. Fusce tincidunt, nisi sit amet vehicula volutpat, nisi felis gravida nisl, eget dignissim felis eros id lacus. Praesent at nulla lacinia dui tristique accumsan
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentReader>
+
+    </Grid>
+</UserControl>

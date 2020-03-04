@@ -17,8 +17,8 @@ namespace Demos.Views {
     /// <summary>
     /// Lógica de interacción para ucProductos.xaml
     /// </summary>
-    public partial class ucProductos : UserControl {
-        public ucProductos() {
+    public partial class ucDocumentos : UserControl {
+        public ucDocumentos() {
             InitializeComponent();
         }
     }

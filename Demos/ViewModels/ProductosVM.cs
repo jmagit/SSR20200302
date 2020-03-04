@@ -64,7 +64,7 @@ namespace Demos.ViewModels {
                 if (elemento != value) {
                     elemento = value;
                     if (elemento != null)
-                        elemento.PropertyChanged += (s, ev) => NotifyPropertyChanged(nameof(Accept));
+                        elemento.PropertyChanged += (s, ev) => { if (Accept != null) Accept.IsEnabled = true; };
                     NotifyPropertyChanged();
                 }
             }
